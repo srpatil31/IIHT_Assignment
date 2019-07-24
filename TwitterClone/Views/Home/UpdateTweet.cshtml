@@ -1,0 +1,68 @@
+﻿@model TwitterClone.Models.PersonTweetModel
+
+<div>
+
+
+    @if (Model != null && Model.TweetsList?.Count() > 0)
+    {
+        <h4>Tweets</h4>
+        <hr />
+        <div class="row">
+            <table>
+                <tr>
+                    <th>
+                        <div class="col-md-3">
+                            @Html.DisplayNameFor(model => model.Tweet.user_id)
+                        </div>
+                    </th>
+                    <th>
+                        <div class="col-md-3">
+                            @Html.DisplayNameFor(model => model.Tweet.message)
+                        </div>
+                    </th>
+                    <th>
+                        <div class="col-md-3">
+                            @Html.DisplayNameFor(model => model.Tweet.created)
+                        </div>
+                    </th>
+                    <th>
+                        <div class="col-md-3">
+                            Action
+                        </div>
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.TweetsList)
+                {
+                   <tr>
+                       <td>
+                           <div class="col-md-3">
+                               @Html.DisplayFor(model => item.user_id)
+                           </div>
+
+                            </td>
+                       <td>
+                           <div class="col-md-3">
+                               @Html.DisplayFor(model => item.message)
+                               </div>
+                       </td>
+                       <td>
+                           <div class="col-md-3">
+                               @Html.DisplayFor(model => item.created)
+                               </div>
+                        </td>
+                       <td>
+                           <div class="col-md-3">
+                               @Html.ActionLink("Edit", "EditTweet", new { id = item.tweet_id })/@Html.ActionLink("Delete", "DeleteTweet", new {id= item.tweet_id})
+                           </div>
+                       </td>
+                   </tr>                                     
+                }
+            </table>
+
+        </div>
+
+
+    }
+
+</div>
