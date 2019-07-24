@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EmployeeApp.ServiceReference1.Employee>
+
+@{
+    ViewBag.Title = "ShowAllEmployeee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowAllEmployeee</h2>
+
+<p>
+   @Html.ActionLink("Create New", "SaveEmployee")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditEmployee", new { jEmployee = Json.Encode(item) }) |
+            @Html.ActionLink("Details", "ShowEmployeee", new { employeeId = item.EmployeeId }) |
+            @Html.ActionLink("Delete", "DeleteEmployee", new { employeeId = item.EmployeeId })
+        </td>
+    </tr>
+}
+
+</table>
